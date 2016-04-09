@@ -7,9 +7,9 @@
 
 <form action="index.php" method="post">
     <input type="text" 
-           name="content" 
-           style="font-size: 25px" 
-           placeholder="Name of content"
+           name="content"
+           placeholder="Type something..."
+           autocomplete="off"
            id="input">
 </form>
 
@@ -33,7 +33,7 @@ addEvent(input, 'keyup',
     function()
     {
         if (input.value.length > 0)
-            XXHR.getText('fileManager.php?v=' + input.value);
+            XXHR().request('fileManager.php?v=' + input.value);
     }, false
 );
 
@@ -42,9 +42,9 @@ addEvent(input, 'keyup',
 setInterval(
     function()
     {
-        XXHR.getText('input.txt', function(v)
+        XXHR().request('input.txt', function(response)
             {
-                val.innerHTML = v;
+                val.innerHTML = response;
             }, true
         );
     }, 2000 // interval
