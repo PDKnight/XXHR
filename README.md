@@ -2,7 +2,7 @@
 A JavaScript library which adds custom functions to call AJAX requests for every browser.
 
 ## Install
-* Download [latest version of main file](https://github.com/PDKnight/XXHR/blob/master/src/XXHR.js) and put it in your website folder.
+* Download [latest minified version of main file](https://github.com/PDKnight/XXHR/blob/master/src/XXHR.min.js) and put it in your website folder.
 * Include your `XXHR.js` before end of `body` tag:
 ```html
 <!-- code... -->
