@@ -15,10 +15,10 @@ A JavaScript library which adds custom functions to call AJAX requests for every
 ### XXHR().response(url, fn, bool [, params])
 * Creates AJAX request.
 * Arguments:
- * url: Url adress of file you want to get text from.
- * fn: A function which will be run with only argument with response text.
- * bool: true (asynchronous) or false (synchronous)
- * params (optional): Use them in case of POST request.
+ * **url**: Url adress of file you want to get text from.
+ * **fn**: A function which will be run with only argument with response text.
+ * **bool**: true (asynchronous) or false (synchronous)
+ * **params (optional)**: Use them in case of POST request.
 * Example:
 ```javascript
 XXHR().response('myFile.txt', function(response) {
