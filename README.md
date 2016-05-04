@@ -12,7 +12,7 @@ A JavaScript library which adds custom functions to call AJAX requests for every
 * That's it!
 
 ## Usage
-### XXHR().response(url, fn, bool [, params])
+### XXHR().request(url, fn, bool [, params])
 * Creates AJAX request.
 * Arguments:
  * **url**: Url adress of file you want to get text from.
@@ -21,7 +21,7 @@ A JavaScript library which adds custom functions to call AJAX requests for every
  * **params (optional)**: Use them in case of POST request.
 * Example:
 ```javascript
-XXHR().response('myFile.txt', function(response) {
+XXHR().request('myFile.txt', function(response) {
     console.log(response);
 }, true);
 ```
