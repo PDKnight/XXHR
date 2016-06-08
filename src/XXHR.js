@@ -1,8 +1,10 @@
+// My own XXHR library, grabbed from https://github.com/PDKnight/XXHR
 var XXHR = function()
 {
-    var NO_XHR_MSG = 'No XHR, no more fun.',
-        XHR_FAILED_MSG = 'The XHR failed :(',
-        createXHR = function ()
+    var ss = [':(', ':[', '._.', '(O.o)', 'd[O_O]b', ';(', ':\'('],
+        NO_XHR_MSG = 'No XHR, no more fun.',
+        XHR_FAILED_MSG = 'The XHR failed',
+        createXHR = function (errfn)
         {
             if (typeof XMLHttpRequest != 'undefined')
                 return new XMLHttpRequest();
@@ -28,15 +30,17 @@ var XXHR = function()
                 return new ActiveXObject(arguments.callee.activeXString);
             } else
             {
-                throw new Error(this.NO_XHR_MSG);
+                if (typeof errfn == 'function')
+                    errfn(NO_XHR_MSG);
+                throw new Error(NO_XHR_MSG);
             }
         };
     return {
-        request: function(url, fn, bool, params)
+        request: function(url, fn, errfn, bool, params)
         {
             if (typeof url != 'string')
                 throw new Error('XXHR.getText function requires at least 1 parameter (string).');
-            var xhr = createXHR(),
+            var xhr = createXHR(errfn),
                 bool = bool || true,
                 type = params ? 'post' : 'get',
                 params = params ? params : null;
@@ -52,8 +56,11 @@ var XXHR = function()
                             fn(allText);
                     } else
                     {
-                        throw new Error(this.XHR_FAILED_MSG 
-                            + ' [status:'+xhr.status+']');
+                        var status = XHR_FAILED_MSG + ' ' + ss[Math.floor(Math.random()*ss.length)]
+                            + ' [status:'+xhr.status+']';
+                        if (typeof errfn == 'function')
+                            errfn(status);
+                        throw new Error(status);
                     }
                 }
             }
@@ -61,4 +68,4 @@ var XXHR = function()
             xhr.send(params);
         }
     };
-}
+};
