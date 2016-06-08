@@ -1,4 +1,3 @@
-// My own XXHR library, grabbed from https://github.com/PDKnight/XXHR
 var XXHR = function()
 {
     var ss = [':(', ':[', '._.', '(O.o)', 'd[O_O]b', ';(', ':\'('],
@@ -59,7 +58,7 @@ var XXHR = function()
                         var status = XHR_FAILED_MSG + ' ' + ss[Math.floor(Math.random()*ss.length)]
                             + ' [status:'+xhr.status+']';
                         if (typeof errfn == 'function')
-                            errfn(status);
+                            errfn(status, xhr.status);
                         throw new Error(status);
                     }
                 }
