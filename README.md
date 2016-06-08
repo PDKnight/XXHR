@@ -12,16 +12,21 @@ A JavaScript library which adds custom functions to call AJAX requests for every
 * That's it!
 
 ## Usage
-### XXHR().request(url, fn, bool [, params])
+### XXHR().request(url, [fn, [errfn, [bool [, params]]]])
 * Creates AJAX request.
 * Arguments:
  * **url**: Url adress of file you want to get text from.
- * **fn**: A function which will be run with only argument with response text.
- * **bool**: true (asynchronous) or false (synchronous)
+ * **fn (optional)**: A function which will be run with only argument with response text.
+ * **errfn (optional):** A function which will be run in case of error with AJAX.
+ * **bool (optional)**: true (asynchronous) or false (synchronous)
  * **params (optional)**: Use them in case of POST request.
 * Example:
 ```javascript
 XXHR().request('myFile.txt', function(response) {
     console.log(response);
+}, function(err, status) {
+    console.log('Hm, it seems like an error happened, here is the log message: ' 
+        + err);
+    console.log('Error status: ' + status);
 }, true);
 ```
