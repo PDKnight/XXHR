@@ -38,7 +38,7 @@ var XXHR = function()
         request: function(url, fn, errfn, bool, params)
         {
             if (typeof url != 'string')
-                throw new Error('XXHR.getText function requires at least 1 parameter (string).');
+                throw new Error('XXHR().request function requires at least 1 parameter (string).');
             var xhr = createXHR(errfn),
                 bool = bool || true,
                 type = params ? 'post' : 'get',
