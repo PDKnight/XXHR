@@ -40,7 +40,7 @@ var XXHR = function()
             if (typeof url != 'string')
                 throw new Error('XXHR().request function requires at least 1 parameter (string).');
             var xhr = createXHR(errfn),
-                bool = bool || true,
+                bool = (typeof bool == 'boolean') ? bool : true,
                 type = params ? 'post' : 'get',
                 params = params ? params : null;
             xhr.onreadystatechange = function()
